@@ -1,0 +1,10 @@
+﻿  RPGame1.cpp
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(126): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(153): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(154): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(155): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(186): warning C4244: "=": konwersja z "int" do "float", możliwa utrata danych
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(187): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(131): warning C4101: "rolled": lokalna zmienna, do której nie istnieje odwołanie
+e:\#studia\rpg_v1.1\rpg_v1.1\rpg_v1.1\adventurehandler.h(88): warning C4715: "adventureHandler::narrate”: niewszystkie ścieżki kodu zwracają wartość
+  RPG_v1.1.vcxproj -> E:\#STUDIA\RPG_v1.1\RPG_v1.1\Debug\RPG_v1.1.exe
