@@ -9,9 +9,12 @@ public:
 		NPC frog("Wright", "Release... Me...", 6, 3, 4);
 		NPC dzik("Occult", "REPENT HERETIC!", 10, 6, 6);
 		NPC devil("Devil", "The Devil himself, reaper of souls... Welcome and prepare to die!", 200, 10, 15);
+		
+		//dynamic array instead of static one
+		Adventure1 = new adventure[7];
 
 		Adventure1[0].setDialogPath("narrate0.dialog");
-		Adventure1[0].setNarrateType("narration");
+		Adventure1[0].setNarrateType("quiz");
 		Adventure1[0].setEncounter(narrator);
 
 		Adventure1[1].setDialogPath("Dianna1.dialog");
@@ -34,12 +37,19 @@ public:
 		Adventure1[5].setNarrateType("combat");
 		Adventure1[5].setEncounter(devil);
 
+		Adventure1[6].setDialogPath("quiz.dialog");
+		Adventure1[6].setNarrateType("quiz");
+		Adventure1[6].setEncounter(narrator);
+
 		progress = 0;
+	}
+	~adventureHandler() {
+		//deleting dynamic array
+		delete [] Adventure1;
 	}
 
 	int narrate(adventure Adventure1, mainCharacter player) {
 		fstream dialogFile;
-	
 					if (Adventure1.getNarrateType() == "combat") {
 				bool temp = battle(player, Adventure1.getEncounter());
 				if (!temp) return 3;
@@ -52,6 +62,7 @@ public:
 							string dialog;
 							while (getline(dialogFile, dialog))
 							{
+								if (Adventure1.getNarrateType() == "quiz") reverse(dialog.begin(), dialog.end());
 								cout << dialog << endl;
 							}
 						}
@@ -221,5 +232,5 @@ public:
 
 private: 
 	int progress;
-	adventure Adventure1[6];
+	adventure *Adventure1;
 };
