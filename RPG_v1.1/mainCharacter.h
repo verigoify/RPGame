@@ -134,6 +134,10 @@ public:
 		stream << player.name;
 		return stream;
 	}
+	//overloaded ++ operator to increase player's current health by 1
+	void operator ++() {
+		this->currentHP++;
+	}
 
 	//getters for mainCharacter class
 	armor getCurrentArmor() {

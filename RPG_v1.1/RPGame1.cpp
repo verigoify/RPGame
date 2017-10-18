@@ -16,7 +16,11 @@ void main()
 {
 	mainCharacter player;
 	cout << player;
+	cout << player.getCurrentHP();
+	system("pause");
 
+	++player;
+	cout << player.getCurrentHP();
 	system("pause");
 	player.listStats();
 	adventureHandler campaign1;
