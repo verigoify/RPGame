@@ -15,6 +15,9 @@ using namespace std;
 void main()
 {
 	mainCharacter player;
+	cout << player;
+
+	system("pause");
 	player.listStats();
 	adventureHandler campaign1;
 	campaign1.startAdventure(player);

@@ -121,7 +121,7 @@ public:
 		return true;
 		
 	}
-	int roller(int max, int min) {
+	static int roller(int max, int min) {
 		int	rolled = rand() % max + min;
 		srand(time(NULL));
 		return rolled;

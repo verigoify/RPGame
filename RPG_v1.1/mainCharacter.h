@@ -129,6 +129,11 @@ public:
 	~mainCharacter()
 	{
 	}
+	//overloaded operator << used to return player's name in cout
+	friend ostream& operator<<(ostream& stream, mainCharacter player){
+		stream << player.name;
+		return stream;
+	}
 
 	//getters for mainCharacter class
 	armor getCurrentArmor() {
