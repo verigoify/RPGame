@@ -1,10 +1,29 @@
 ﻿  RPGame1.cpp
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(137): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(164): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(165): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(166): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(197): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(198): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(142): warning C4101: 'rolled': unreferenced local variable
-c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(99): warning C4715: 'adventureHandler::narrate': not all control paths return a value
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(141): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(147): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(175): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(176): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(177): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(208): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(209): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(153): warning C4101: 'rolled': unreferenced local variable
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(267): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(268): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(269): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(300): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(301): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(322): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(323): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(245): warning C4101: 'rolled': unreferenced local variable
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(381): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(382): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(383): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(414): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(415): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(436): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(437): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(455): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(456): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(359): warning C4101: 'rolled': unreferenced local variable
+c:\users\mmirz\repos\rpg_v1.1\rpg_v1.1\adventurehandler.h(101): warning C4715: 'adventureHandler::narrate': not all control paths return a value
   RPG_v1.1.vcxproj -> C:\Users\mmirz\Repos\RPG_v1.1\Debug\RPG_v1.1.exe

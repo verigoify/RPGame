@@ -10,4 +10,5 @@ public:
 	
 	int weight;
 	string equipmentName;
+	
 };

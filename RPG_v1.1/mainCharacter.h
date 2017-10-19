@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "windows.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ class mainCharacter
 public:
 
 	//constructor for mainCharacter class that requires provided character's stat
-	/*mainCharacter(int str, int dex, int consti, int intelli, int wis, int chari, string charName, string charClass)
+	mainCharacter(int str, int dex, int consti, int intelli, int wis, int chari, string charName, string charClass)
 	{
 		strength = str;
 		dexterity = dex;
@@ -34,7 +35,7 @@ public:
 			maxCarriedWeight = 3;
 		}
 		
-	}*/
+	}
 	//character creator function -reads dialog from GuardianAngel and saves player's stats using 1-dimension array
 	mainCharacter() {
 		//pregen statblock
@@ -176,7 +177,6 @@ public:
 	int getCurrentHP() {
 		return currentHP;
 	}
-
 	int getArmorClass() {
 		return armorClass;
 	}
@@ -251,6 +251,15 @@ public:
 		system("cls");
 	}
 
+	static void startTimer() {
+		timeA = GetTickCount();
+	}
+	static void stopTimer() {
+		timeB = GetTickCount();
+	}
+	static void getElapsedTime() {
+		cout << "Gra trwala " << (timeB - timeA)/1000 << " sekund" << endl ; 
+	}
 
 private:
 	//basic character stats, private values
@@ -268,6 +277,8 @@ private:
 	string characterClass;
 	armor carriedArmor;
 	weapon carriedWeapon;
+	static int timeA;
+	static int timeB;
 };
 
 

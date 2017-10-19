@@ -5,7 +5,9 @@ class adventureHandler{
 public:
 	adventureHandler() {
 		NPC dianna("Dianna", "w/e", 15, 15, 15);
-		NPC narrator("Narrator", "narrator.dialog", 999, 999, 999);  //what is my purpose? You pass butter
+		//what is my purpose? You pass butter
+		//no narrator needed as .setEncounter is deleted
+		//NPC narrator("Narrator", "narrator.dialog", 999, 999, 999); 
 		NPC frog("Wright", "Release... Me...", 6, 3, 4);
 		NPC dzik("Occult", "REPENT HERETIC!", 10, 6, 6);
 		NPC devil("Devil", "The Devil himself, reaper of souls... Welcome and prepare to die!", 200, 10, 15);
@@ -15,7 +17,7 @@ public:
 
 		Adventure1[0].setDialogPath("narrate0.dialog");
 		Adventure1[0].setNarrateType("quiz");
-		Adventure1[0].setEncounter(narrator);
+		
 
 		Adventure1[1].setDialogPath("Dianna1.dialog");
 		Adventure1[1].setNarrateType("narration");
@@ -27,7 +29,7 @@ public:
 
 		Adventure1[3].setDialogPath("narrate1.dialog");
 		Adventure1[3].setNarrateType("questReturn");
-		Adventure1[3].setEncounter(narrator);
+		
 
 		Adventure1[4].setDialogPath("frogCombat.dialog");
 		Adventure1[4].setNarrateType("combat");
@@ -39,7 +41,7 @@ public:
 
 		Adventure1[6].setDialogPath("quiz.dialog");
 		Adventure1[6].setNarrateType("quiz");
-		Adventure1[6].setEncounter(narrator);
+		
 
 		progress = 0;
 	}
@@ -132,12 +134,21 @@ public:
 		return true;
 		
 	}
+
+	//static roller function overloaded once
 	static int roller(int max, int min) {
 		int	rolled = rand() % max + min;
 		srand(time(NULL));
 		return rolled;
 	}
-	bool battle(mainCharacter player, NPC encounter) {
+	//overloaded to always roll 20
+	static int roller() {
+		int rolled = rand() % 20 + 1;
+		srand(time(NULL));
+		return rolled;
+	}
+	//twice overloaded method battle, now you can battle with up to 3 encounters at once
+	static bool battle(mainCharacter player, NPC encounter) {
 		int damageLeft;
 		int rolled;
 		system("cls");
@@ -228,6 +239,255 @@ public:
 			return false;
 		}
 	
+	}
+	static bool battle(mainCharacter player, NPC encounter, NPC encounter1) {
+		int damageLeft;
+		int rolled;
+		system("cls");
+		cout << "You encounter " << encounter.getName() << endl;
+		cout << encounter.getName() << " screams at you: " << encounter.getDialogPath() << endl;
+		while (player.getCurrentHP() > 0 && (encounter.getCurrentHP() > 0)) {
+			int choice;
+			int rolledAttack;
+			float rolledDmg;
+			cout << "------------------------------------------" << endl;
+			cout << "What do you do?" << endl;
+			cout << "1- Attack" << endl;
+			cout << "2- Run" << endl;
+			cout << "------------------------------------------" << endl;
+			cin >> choice;
+			switch (choice)
+			{
+			case 1:
+				cout << "You try to attack " << encounter.getName() << endl;
+				rolledAttack = roller(20, 1);
+
+				cout << "You rolled " << rolledAttack << " as your attack roll!" << endl;
+				if (rolledAttack > encounter.getArmorClass()) {
+					srand(time(NULL));
+					rolledDmg = roller(6, 1) + player.getStrength() % 10 + player.getCurrentWeapon().getExtraDmg();
+					encounter.setCurrentHP(encounter.getCurrentHP() - rolledDmg);
+					cout << endl;
+					cout << "------------------------------------------" << endl;
+					cout << "You hit " << encounter.getName() << " dealing: " << rolledDmg << " dmg" << endl;
+					cout << encounter.getName() << " has " << encounter.getCurrentHP() << "HP left" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				else {
+					cout << "------------------------------------------" << endl;
+					cout << "You failed!" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				system("pause");
+				system("cls");
+				break;
+
+			case 2:
+				cout << "You ran away safely..." << endl;
+				return true;
+
+			default:
+
+				break;
+			}
+			if (encounter.getCurrentHP() > 0) {
+				rolledAttack = 0;
+				rolledDmg = 0;
+				cout << encounter.getName() << " tries to attack you!" << endl;
+
+				rolledAttack = roller(20, 1);
+				if (rolledAttack > player.getArmorClass()) {
+					rolledDmg = roller(encounter.getDmgMax(), 0);
+					damageLeft = player.getCurrentHP() - rolledDmg;
+					player.setCurrentHP(damageLeft);
+					cout << endl;
+					cout << "------------------------------------------" << endl;
+					cout << encounter.getName() << " attacks you and deals you: " << rolledDmg << " dmg points." << endl;
+					cout << "You have " << player.getCurrentHP() << "HP left" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				else {
+					cout << "Enemy attack missed!" << endl;
+				}
+				system("pause");
+				system("cls");
+			}
+			if (encounter1.getCurrentHP() > 0) {
+				rolledAttack = 0;
+				rolledDmg = 0;
+				cout << encounter.getName() << " tries to attack you!" << endl;
+
+				rolledAttack = roller(20, 1);
+				if (rolledAttack > player.getArmorClass()) {
+					rolledDmg = roller(encounter.getDmgMax(), 0);
+					damageLeft = player.getCurrentHP() - rolledDmg;
+					player.setCurrentHP(damageLeft);
+					cout << endl;
+					cout << "------------------------------------------" << endl;
+					cout << encounter.getName() << " attacks you and deals you: " << rolledDmg << " dmg points." << endl;
+					cout << "You have " << player.getCurrentHP() << "HP left" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				else {
+					cout << "Enemy attack missed!" << endl;
+				}
+				system("pause");
+				system("cls");
+			}
+
+			else {
+				system("pause");
+				system("cls");
+			}
+		}
+		cout << "Battle ends!" << endl;
+		system("pause");
+		system("cls");
+
+		if (player.getCurrentHP() > 0) {
+			cout << "You won!" << endl;
+			return true;
+		}
+		else {
+			cout << " YOU DIED" << endl;
+			return false;
+		}
+
+	}
+	static bool battle(mainCharacter player, NPC encounter, NPC encounter1, NPC encounter2) {
+		int damageLeft;
+		int rolled;
+		system("cls");
+		cout << "You encounter " << encounter.getName() << endl;
+		cout << encounter.getName() << " screams at you: " << encounter.getDialogPath() << endl;
+		while (player.getCurrentHP() > 0 && (encounter.getCurrentHP() > 0)) {
+			int choice;
+			int rolledAttack;
+			float rolledDmg;
+			cout << "------------------------------------------" << endl;
+			cout << "What do you do?" << endl;
+			cout << "1- Attack" << endl;
+			cout << "2- Run" << endl;
+			cout << "------------------------------------------" << endl;
+			cin >> choice;
+			switch (choice)
+			{
+			case 1:
+				cout << "You try to attack " << encounter.getName() << endl;
+				rolledAttack = roller(20, 1);
+
+				cout << "You rolled " << rolledAttack << " as your attack roll!" << endl;
+				if (rolledAttack > encounter.getArmorClass()) {
+					srand(time(NULL));
+					rolledDmg = roller(6, 1) + player.getStrength() % 10 + player.getCurrentWeapon().getExtraDmg();
+					encounter.setCurrentHP(encounter.getCurrentHP() - rolledDmg);
+					cout << endl;
+					cout << "------------------------------------------" << endl;
+					cout << "You hit " << encounter.getName() << " dealing: " << rolledDmg << " dmg" << endl;
+					cout << encounter.getName() << " has " << encounter.getCurrentHP() << "HP left" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				else {
+					cout << "------------------------------------------" << endl;
+					cout << "You failed!" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				system("pause");
+				system("cls");
+				break;
+
+			case 2:
+				cout << "You ran away safely..." << endl;
+				return true;
+
+			default:
+
+				break;
+			}
+			if (encounter.getCurrentHP() > 0) {
+				rolledAttack = 0;
+				rolledDmg = 0;
+				cout << encounter.getName() << " tries to attack you!" << endl;
+
+				rolledAttack = roller(20, 1);
+				if (rolledAttack > player.getArmorClass()) {
+					rolledDmg = roller(encounter.getDmgMax(), 0);
+					damageLeft = player.getCurrentHP() - rolledDmg;
+					player.setCurrentHP(damageLeft);
+					cout << endl;
+					cout << "------------------------------------------" << endl;
+					cout << encounter.getName() << " attacks you and deals you: " << rolledDmg << " dmg points." << endl;
+					cout << "You have " << player.getCurrentHP() << "HP left" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				else {
+					cout << "Enemy attack missed!" << endl;
+				}
+				system("pause");
+				system("cls");
+			}
+			if (encounter1.getCurrentHP() > 0) {
+				rolledAttack = 0;
+				rolledDmg = 0;
+				cout << encounter.getName() << " tries to attack you!" << endl;
+
+				rolledAttack = roller(20, 1);
+				if (rolledAttack > player.getArmorClass()) {
+					rolledDmg = roller(encounter.getDmgMax(), 0);
+					damageLeft = player.getCurrentHP() - rolledDmg;
+					player.setCurrentHP(damageLeft);
+					cout << endl;
+					cout << "------------------------------------------" << endl;
+					cout << encounter.getName() << " attacks you and deals you: " << rolledDmg << " dmg points." << endl;
+					cout << "You have " << player.getCurrentHP() << "HP left" << endl;
+					cout << "------------------------------------------" << endl;
+				}
+				else {
+					cout << "Enemy attack missed!" << endl;
+				}
+				if (encounter2.getCurrentHP() > 0) {
+					rolledAttack = 0;
+					rolledDmg = 0;
+					cout << encounter.getName() << " tries to attack you!" << endl;
+
+					rolledAttack = roller(20, 1);
+					if (rolledAttack > player.getArmorClass()) {
+						rolledDmg = roller(encounter.getDmgMax(), 0);
+						damageLeft = player.getCurrentHP() - rolledDmg;
+						player.setCurrentHP(damageLeft);
+						cout << endl;
+						cout << "------------------------------------------" << endl;
+						cout << encounter.getName() << " attacks you and deals you: " << rolledDmg << " dmg points." << endl;
+						cout << "You have " << player.getCurrentHP() << "HP left" << endl;
+						cout << "------------------------------------------" << endl;
+					}
+					else {
+						cout << "Enemy attack missed!" << endl;
+					}
+
+					system("pause");
+					system("cls");
+				}
+
+				else {
+					system("pause");
+					system("cls");
+				}
+			}
+			cout << "Battle ends!" << endl;
+			system("pause");
+			system("cls");
+
+			if (player.getCurrentHP() > 0) {
+				cout << "You won!" << endl;
+				return true;
+			}
+			else {
+				cout << " YOU DIED" << endl;
+				return false;
+			}
+
+		}
 	}
 
 private: 
